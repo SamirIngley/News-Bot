@@ -10,23 +10,58 @@ URL <input type="text" name="url">
 <br>
 Keywords <input type="text" name="keywords">
 <br>
+
 <button type="submit" class="btn btn-warning">Submit</button>
 </center>
 </form>
+<style>
+    .load-container {
+        top: 50%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+    }
+    .loading {
+        border: 6px solid #ccc;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border-top-color: blue;
+        border-left-color: blue;
+        animation: spin 1s infinite ease-in-out;
+    }
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg)
+        }
+        100% {
+            transform: rotate(1080deg)
+        }
+    }
 
-{{msg}}
-<ol>
-{% for index in range(article_list | length)%}
+</style>
+<div class="load-container">
+    <div class="loading">
 
-    <li>
-        <p>{{title_list[index]}}</p>
-        <p>{{link_list[index]}}</p>
-        <p>{{date_list[index]}}</p>
-        <p>{{article_list[index]}}</p>
-    </li>
+    </div>
+</div>
 
-{% endfor %}
-</ol>
+<div class="summaries">
+    {{msg}}
+    <ol>
+    {% for index in range(article_list | length)%}
+
+        <li>
+            <p>{{title_list[index]}}</p>
+            <p>{{link_list[index]}}</p>
+            <p>{{date_list[index]}}</p>
+            <p>{{article_list[index]}}</p>
+        </li>
+
+    {% endfor %}
+    </ol>
+</div>
+
 <!-- 
 <a href="/delete" class="btn btn-secondary">Delete</a>
 <a href="/edit" class="btn btn-secondary">Edit</a> -->
