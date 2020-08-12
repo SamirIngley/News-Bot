@@ -11,25 +11,30 @@ URL <input type="text" name="url">
 Keywords <input type="text" name="keywords">
 <br>
 
-<button type="submit" class="btn btn-warning">Submit</button>
+<button type="submit" id="submit" class="btn btn-warning">Submit</button>
 </center>
 </form>
+
 <style>
+        
     .load-container {
+        display: none;
         top: 50%;
         left: 50%;
         position: absolute;
         transform: translate(-50%, -50%);
     }
+
     .loading {
         border: 6px solid #ccc;
         width: 60px;
         height: 60px;
         border-radius: 50%;
-        border-top-color: blue;
-        border-left-color: blue;
+        border-top-color: gold;
+        border-left-color: gold;
         animation: spin 1s infinite ease-in-out;
     }
+
     @keyframes spin {
         0% {
             transform: rotate(0deg)
@@ -40,6 +45,7 @@ Keywords <input type="text" name="keywords">
     }
 
 </style>
+
 <div class="load-container">
     <div class="loading">
 
@@ -61,6 +67,19 @@ Keywords <input type="text" name="keywords">
     {% endfor %}
     </ol>
 </div>
+
+<script>
+    let loadContainer = document.querySelector('.load-container');
+
+    document.getElementById("submit").addEventListener("click", function() {
+        loadContainer.style.display = 'block';
+    })
+
+    // window.addEventListener('load', function() {
+    //     loadContainer.style.display = 'none';
+    // })
+
+</script>
 
 <!-- 
 <a href="/delete" class="btn btn-secondary">Delete</a>
