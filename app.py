@@ -31,7 +31,7 @@ import collections
 def index():
     """Return homepage."""
 
-    return render_template('index.html')
+    return render_template('home.html')
 
 
 @app.route('/update', methods=["POST"])
@@ -49,7 +49,7 @@ def update():
     # print(my_article.link_list)
     # print(my_article.title_list)
 
-    return  render_template('index.html', msg=my_article.msg, article_list=my_article.article_list, authors=my_article.author_list, date=my_article.date_list, link=my_article.link_list, title=my_article.title_list)
+    return  render_template('home.html', msg=my_article.msg, article_list=my_article.article_list, authors=my_article.author_list, date=my_article.date_list, link=my_article.link_list, title=my_article.title_list)
     
 
 

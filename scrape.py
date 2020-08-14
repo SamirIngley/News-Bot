@@ -38,7 +38,7 @@ class Scraper:
                 for item in self.keywords.split(' '):
                     # print("KEY: ", item.lower())
                     for item2 in new_article.keywords:
-                        print(item2.lower(), item.lower())
+                        # print(item2.lower(), item.lower())
                         if item.lower() == item2.lower() and new_article.url not in self.link_list:
                             print("MATCH")
                             self.article_list.appendleft(new_article.summary)
