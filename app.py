@@ -9,11 +9,14 @@ import requests
 import re
 
 import nltk
+import newspaper
 from newspaper import Article
 from PIL import Image
 
-from bs4 import BeautifulSoup
-
+# from bs4 import BeautifulSoup
+import scrape
+import dog
+# from scrape import scraper
 
 app = Flask(__name__)
 
@@ -31,59 +34,25 @@ def index():
     return render_template('index.html')
 
 
+@app.route('/update', methods=["POST"])
+def update():
 
-@app.route('/updated', methods=["POST"])
-def updated():
-    article_list = collections.deque()
-    date_list = collections.deque()
-    link_list = collections.deque()
-    title_list = collections.deque()
-    msg = ''
     url = request.form.get('url')
-    keys = request.form.get('keywords')
-    
-    soup = BeautifulSoup(requests.get(url).text, 'html.parser')
-    # links = soup.findAll("li", {"a"})
-    links = soup.select("li a", attrs={'href': re.compile("^http://")})
-    # print(links)
-    for link in links:
-        # print("****** LINK: ", link.get('href'))
-        # print("KEYS: ", keys)
-        full_link = url+link.get('href')[3:]
-        # print(full_link)
-        article = Article(full_link, language="en")
-        article.download()
-        article.parse()
-        article.nlp()
-        # article_list.appendleft((article.authors))
-        # article_list.appendleft((article.keywords))
-        # article_list.appendleft((article.text))
-        # print(article.keywords)
-        if keys != '':
-            for item in article.keywords:
-                for item2 in keys.split(' '):
-                    # print(item.lower(), item2.lower())
-                    if item.lower() == item2.lower():
-                        # print("MATCH ", item, item2)
-                        if full_link in link_list:
-                            continue
-                        else:
-                            article_list.appendleft((article.summary))
-                            date_list.appendleft((article.publish_date))
-                            link_list.appendleft((full_link))
-                            title_list.appendleft((article.title))
-        else:
-            article_list.appendleft((article.summary))
-            date_list.appendleft((article.publish_date))
-            link_list.appendleft((full_link))
-            title_list.appendleft((article.title))
-        
-    if len(article_list) == 0:
-        msg = "No articles"
+    keywords = request.form.get('keywords')
+    num = request.form.get('num')
 
-    print("MSG: ", msg)
-    return render_template('index.html', msg=msg, article_list=article_list, date_list=date_list, link_list=link_list, title_list=title_list)
+    my_article = scrape.Scraper(url, keywords, num)
+    my_article.scraping()
+
+    # print(my_article.article_list)
+    # print(my_article.date_list)
+    # print(my_article.link_list)
+    # print(my_article.title_list)
+
+    return  render_template('index.html', msg=my_article.msg, article_list=my_article.article_list, authors=my_article.author_list, date=my_article.date_list, link=my_article.link_list, title=my_article.title_list)
     
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
