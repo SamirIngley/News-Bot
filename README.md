@@ -5,13 +5,13 @@ The best way to gather info on a current topic through any news source.
 ## What is it:
 A simple, powerful news scraper.
 
-Scrape up to ~1000 articles on a website.
-Check for your keywords
-**Returns a summary of each of those articles.**
+* Scrape up to ~1000 articles on a website.
+* Check for your keywords
+* **Returns a summary of each of those articles.**
 
 [Try Me](https://news-summary-bot.herokuapp.com/)
 
-Note: heroku is giving me a 'timeout error' which I need to find a way to bypass because it does take a minute to loop through all the articles. 
+Note: the deployed version is giving me a 'timeout error' which I need to find a way to bypass because it does take a minute to loop through all the articles. 
 
 ## Example:
 
