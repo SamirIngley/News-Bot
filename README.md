@@ -9,6 +9,10 @@ Scrape up to ~1000 articles on a website.
 Check for your keywords
 **Returns a summary of each of those articles.**
 
+[Try Me](https://news-summary-bot.herokuapp.com/)
+
+Note: heroku is giving me a 'timeout error' which I need to find a way to bypass because it does take a minute to loop through all the articles. 
+
 ## Example:
 
 ### Search
