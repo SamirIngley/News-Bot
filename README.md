@@ -7,7 +7,7 @@ A simple, powerful news scraper.
 
 Scrape up to ~1000 articles on a website.
 Check for your keywords
-Returns a summary of each of those articles. 
+**Returns a summary of each of those articles.**
 
 ## Example:
 
