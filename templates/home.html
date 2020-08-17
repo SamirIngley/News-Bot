@@ -11,11 +11,37 @@
 </div>
 
 <style>
+    
+    .form {
+        margin: 20px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    
+
+    }
+
+    .input {
+        margin-top: 30px;
+        margin-bottom: 50px;
+        margin-left: 350px;
+        margin-right: 350px;
+
+        
+    }
+
+    .summaries {
+        margin: 20px;
+    }
+
+    .card {
+        margin: 10px;
+    }
         
     .load-container {
         display: none;
-        bottom: 80%;
-        left: 90%;
+        bottom: 85%;
+        left: 60%;
         position: absolute;
         transform: translate(-50%, -50%);
     }
@@ -41,55 +67,64 @@
 
 </style>
 
-<center><h1>Summaries</h1>
-<br>
-<form action="/update" method="POST">
+<div class="container">
 
-<input type="text" name="url" placeholder="URL">
-<br>
+    <center>
+    <div class="input">
+        <form action="/update" method="POST">
 
-<input type="text" name="keywords" placeholder="Keywords">
-<br>
-
-<input type="text" name="num" placeholder="scan # articles">
-<br>
-
-<button type="submit" id="submit" class="btn btn-primary">Submit</button>
-</center>
-</form>
-
-
-<div class="load-container">
-    <div class="loading">
+            <input type="text" name="url" placeholder="URL">
+            <br>
+            
+            <input type="text" name="keywords" placeholder="Keywords">
+            <br>
+            
+            <input type="text" name="num" placeholder="scan # articles">
+            <br>
+            
+            <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+            </center>
+        </form>
 
     </div>
-</div>
 
-<div class="summaries">
-
-    {% if msg != '' %}
-        <div class="alert alert-secondary" role="alert">
-            {{msg}}
-        </div>
-    {% endif %}
     
-    {% for index in range(article_list | length)%}
-        
-        <div class="card text-center" style="width: 100rvw;">
-            <div class="card-body">
-              <h5 class="card-title">{{ title[index] }}</h5>
-              <p class="card-text">{{ article_list[index] }}</p>
+    </center>
 
-              <p class="card-text">{{ authors[index] }}</p>
-              
-              <p class="card-text">Posted: {{ date[index] }}</p>
-              <a href="{{ link[index] }}" class="btn btn-primary">Link</a>
+
+    <div class="load-container">
+        <div class="loading">
+
+        </div>
+    </div>
+
+    <div class="summaries">
+
+        {% for item in range(msg | length) %}
+            <div class="alert alert-secondary" role="alert">
+                {{msg}}
             </div>
-          </div>
+        {% endfor %}
+        
+        {% for index in range(article_list | length)%}
+            
+            <div class="card text-center" style="width: 100rvw;">
+                <div class="card-body">
+                <h5 class="card-title">{{ title[index] }}</h5>
+                <p class="card-text">{{ article_list[index] }}</p>
 
-    {% endfor %}
+                <p class="card-text">{{ authors[index] }}</p>
+                
+                <p class="card-text">Posted: {{ date[index] }}</p>
+                <a href="{{ link[index] }}" class="btn btn-primary">Link</a>
+                </div>
+            </div>
+
+        {% endfor %}
 
 
+    </div>
+    
 </div>
 
 <script>
