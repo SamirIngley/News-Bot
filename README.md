@@ -2,6 +2,15 @@
 
 The best way to gather info on a current topic through any news source.
 
+## Example:
+
+### Search
+![TrumpSearch](TrumpSearch.png)
+
+### Results
+![TrumpArticles](TrumpArticles.png)
+
+
 ## What is it:
 A simple, powerful news scraper.
 
@@ -11,16 +20,7 @@ A simple, powerful news scraper.
 
 [Try Me](https://news-summary-bot.herokuapp.com/)
 
-Note: the deployed version is giving me a 'timeout error' which I need to find a way to bypass because it does take a minute to loop through all the articles. 
-
-## Example:
-
-### Search
-![TrumpSearch](TrumpSearch.png)
-
-### Results
-![TrumpArticles](TrumpArticles.png)
-
+:bulb: **Note: Currently, the deployed version is giving me a 'timeout error' which I need to find a way to bypass because it does take a minute to loop through all the articles. SO if you want to use it, download this repo. then run `flask run` and go to the local host server shown and voila.**
 
 ## How to use it:
 Enter the url of the website.
