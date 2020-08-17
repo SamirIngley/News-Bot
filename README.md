@@ -2,8 +2,6 @@
 
 The best way to gather info on a current topic through any news source.
 
-## Example:
-
 ### Search
 ![TrumpSearch](TrumpSearch.png)
 
